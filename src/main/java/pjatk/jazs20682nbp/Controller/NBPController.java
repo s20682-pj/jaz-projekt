@@ -29,10 +29,10 @@ public class NBPController {
             notes = "Getting average exchange rate from provided dates")
 
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Fine"),
+            @ApiResponse(code = 200, message = "Everything is ok"),
             @ApiResponse(code = 404, message = "Date not found"),
-            @ApiResponse(code = 401, message = "You shouldn't see this"),
-            @ApiResponse(code = 403, message = "Nope")
+            @ApiResponse(code = 401, message = "You shouldn't see this, access denied"),
+            @ApiResponse(code = 403, message = "The access is permanently forbidden")
     })
 
     @GetMapping("/avg/{data_Od}/{data_Do}")
@@ -51,7 +51,7 @@ public class NBPController {
                     required = true,
                     defaultValue = "1")
             @PathVariable Date data_Do
-            ) throws GlobalExceptionHandler
+            )
             {
         return ResponseEntity.ok(nbpService.avgKurs(data_Od,data_Do));
     }
