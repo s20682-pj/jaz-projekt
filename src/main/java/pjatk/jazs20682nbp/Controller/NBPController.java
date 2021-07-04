@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pjatk.jazs20682nbp.Exception.GlobalExceptionHandler;
 import pjatk.jazs20682nbp.Model.NBPModel;
 import pjatk.jazs20682nbp.Service.NBPService;
 
@@ -43,14 +44,14 @@ public class NBPController {
                     required = true,
                     defaultValue = "1")
             @PathVariable Date data_Od,
-            @ApiParam(name = "data_Od",
+            @ApiParam(name = "data_Do",
                     type = "date",
                     value = "2020-01-02",
                     example = "2021-01-02",
                     required = true,
                     defaultValue = "1")
             @PathVariable Date data_Do
-            )
+            ) throws GlobalExceptionHandler
             {
         return ResponseEntity.ok(nbpService.avgKurs(data_Od,data_Do));
     }
